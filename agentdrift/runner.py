@@ -12,6 +12,7 @@ Metrics (the interview-ready definitions):
   how much a single mistake grows by the end of the chain. The direct
   analogue of rollout error accumulation in physical simulation.
 """
+from collections import Counter
 from dataclasses import dataclass, field
 from .tasks import Task, call, gold_chain
 
@@ -54,7 +55,7 @@ def run_task(task: Task, agent) -> RunResult:
         if error and onset is None:
             onset = i
         records.append(StepRecord(i, s.goal, action, result, gold[i], error))
-        results.append(result if not isinstance(result, str) or not result.startswith("error:") else None)
+        results.append(None if isinstance(result, str) and result.startswith("error:") else result)
         history.append({"goal": s.goal, "action": action, "result": result})
     final_ok = _equal(results[-1] if results else None, gold[-1])
     return RunResult(task.id, len(task.steps), final_ok, onset,
@@ -123,6 +124,6 @@ def sweep(agent, tasks, repeats: int = 10) -> dict:
         "onset_rate": onset_rate_all,
         "median_error_growth": (sorted(growths)[len(growths) // 2]
                                 if growths else None),
-        "onset_distribution": {r.onset: 1 for r in all_onsets},
+        "onset_distribution": Counter(r.onset for r in all_onsets),
         "per_length": list(per_len.values()),
     }

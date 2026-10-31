@@ -35,11 +35,8 @@ class Task:
     id: str
     description: str
     steps: list
-    tolerance: float = 1e-6
 
 
-_ALLOWED = (ast.Expression, ast.BinOp, ast.UnaryOp, ast.Constant,
-            ast.Add, ast.Sub, ast.Mult, ast.Div, ast.USub, ast.UAdd)
 _OPS = {ast.Add: operator.add, ast.Sub: operator.sub,
         ast.Mult: operator.mul, ast.Div: operator.truediv}
 
