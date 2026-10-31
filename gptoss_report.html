@@ -1,0 +1,27 @@
+<!doctype html><html><head><meta charset="utf-8"><title>model=gpt-oss:120b-cloud</title>
+<style>
+ body{font:15px/1.6 system-ui,sans-serif;margin:0;background:#111;color:#eee}
+ .wrap{max-width:860px;margin:0 auto;padding:32px 20px}
+ h1{font-size:24px;letter-spacing:-.01em} .sub{color:#999;margin-bottom:24px}
+ .cards{display:flex;gap:12px;flex-wrap:wrap;margin:20px 0}
+ .card{flex:1;min-width:150px;background:#1b1d1f;border:1px solid #2a2d30;border-radius:10px;padding:14px 16px}
+ .k{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#999}
+ .v{font-size:22px;margin-top:4px;font-variant-numeric:tabular-nums}
+ svg,.box{background:#17181a;border:1px solid #2a2d30;border-radius:10px;padding:8px;margin:18px 0}
+ table{border-collapse:collapse;width:100%;font-size:13px;font-variant-numeric:tabular-nums}
+ td,th{padding:6px 10px;text-align:left;border-bottom:1px solid #26282a}
+ th{color:#999;font-size:11px;text-transform:uppercase;letter-spacing:.06em}
+</style></head><body><div class="wrap">
+<h1>agentdrift</h1>
+<p class="sub">model=gpt-oss:120b-cloud &middot; generated 2026-10-31 12:57 UTC</p>
+<div class="cards">
+<div class="card"><div class="k">success rate</div><div class="v">56%</div></div>
+<div class="card"><div class="k">per-step error</div><div class="v">13.4%</div></div>
+<div class="card"><div class="k">recovery rate</div><div class="v">0%</div></div>
+<div class="card"><div class="k">median error growth</div><div class="v">0.00x</div></div>
+</div>
+<div class="box"><svg viewBox="0 0 560 280" font-family="system-ui"><line x1="40" y1="240" x2="520" y2="240" stroke="#eee"/><text x="34" y="244" text-anchor="end" font-size="10" fill="#999">0%</text><line x1="40" y1="190" x2="520" y2="190" stroke="#eee"/><text x="34" y="194" text-anchor="end" font-size="10" fill="#999">25%</text><line x1="40" y1="140" x2="520" y2="140" stroke="#eee"/><text x="34" y="144" text-anchor="end" font-size="10" fill="#999">50%</text><line x1="40" y1="90" x2="520" y2="90" stroke="#eee"/><text x="34" y="94" text-anchor="end" font-size="10" fill="#999">75%</text><line x1="40" y1="40" x2="520" y2="40" stroke="#eee"/><text x="34" y="44" text-anchor="end" font-size="10" fill="#999">100%</text><line x1="40" y1="240" x2="520" y2="240" stroke="#999"/><line x1="40" y1="40" x2="40" y2="240" stroke="#999"/><polyline points="40,67 232,110 424,143 520,156" fill="none" stroke="#bbb" stroke-dasharray="4 3"/><polyline points="40,40 232,107 424,140 520,190" fill="none" stroke="#0ea5e9" stroke-width="2"/><text x="520" y="32" text-anchor="end" font-size="11" fill="#888">grey dashed: independent-error baseline</text><text x="280.0" y="274" text-anchor="middle" font-size="10" fill="#666">chain length (tool calls)</text></svg></div>
+<table><tr><th>length</th><th>success</th><th>onset rate</th><th>independent baseline fail</th><th>amplification</th></tr><tr><td>1</td><td>100%</td><td>0%</td><td>13.4%</td><td><b>0.00x</b></td></tr><tr><td>3</td><td>67%</td><td>33%</td><td>35.0%</td><td><b>0.95x</b></td></tr><tr><td>5</td><td>50%</td><td>50%</td><td>51.3%</td><td><b>0.97x</b></td></tr><tr><td>6</td><td>25%</td><td>75%</td><td>57.8%</td><td><b>1.30x</b></td></tr></table>
+<h3 style="margin-top:28px">Onset distribution</h3>
+<table style="max-width:280px"><tr><td>step 0</td><td>3</td></tr><tr><td>step 1</td><td>2</td></tr><tr><td>step 3</td><td>1</td></tr><tr><td>step 4</td><td>1</td></tr></table>
+</div></body></html>

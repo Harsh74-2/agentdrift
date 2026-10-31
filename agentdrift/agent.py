@@ -10,6 +10,8 @@ import os
 import random
 import urllib.request
 
+from .tasks import STORE
+
 
 class MockAgent:
     """Simulates an agent with per-step error rate `p`.
@@ -64,6 +66,8 @@ class OpenAIAgent:
         '{"tool": "calc"|"lookup", "args": {...}}\n'
         "calc takes {\"expression\": <arithmetic>}, lookup takes {\"key\": <string>}.\n"
         "In a calc expression, r<i> means the result of step i (r0 = first step).\n"
+        "These store keys exist: " + ", ".join(sorted(STORE))
+        + ". Key names are exact; guess nothing.\n"
         "Do not write anything except the JSON object."
     )
 

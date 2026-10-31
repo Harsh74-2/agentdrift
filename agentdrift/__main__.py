@@ -33,6 +33,9 @@ def main(argv=None):
 
     with open(a.out, "w", encoding="utf-8") as f:
         f.write(report.render(metrics, title))
+    with open(a.out.rsplit(".", 1)[0] + ".json", "w", encoding="utf-8") as f:
+        import json
+        json.dump({"title": title, **metrics}, f, indent=2)
     print(f"wrote {a.out}")
     print(f"success={metrics['success_rate']:.0%}  "
           f"per-step error={metrics['per_step_error_rate']:.1%}  "

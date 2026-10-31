@@ -61,10 +61,31 @@ independent-error baseline), an onset table, and metric cards.
   (and error strings) in context and attempt repair — that is exactly the
   behaviour this harness scores.
 
+## First real-model result
+
+`gpt-oss:120b` (cloud, temperature 0) on the bundled task set, 2 repeats per
+task (16 chains, small n):
+
+| chain length | success | onset rate | independent baseline fail | amplification |
+|---|---|---|---|---|
+| 1 | 100% | 0% | 13.4% | 0.00x |
+| 3 | 67% | 33% | 35.0% | 0.95x |
+| 5 | 50% | 50% | 51.3% | 0.97x |
+| 6 | 25% | 75% | 57.8% | **1.30x** |
+
+Headline numbers: **56% overall success at 13.4% per-step error, and recovery
+rate 0.0** — not once in 16 chains did the model correct its first mistake;
+its error rate alone predicts roughly 100% task failure by length 6 (observed
+25% vs 42% chance baseline). With error-free step 1 and onset clustering on
+lookups, the failure mode is concrete, not statistical noise.
+
+Reproduce: `AGENTDRIFT_BASE_URL=http://localhost:11434/v1
+AGENTDRIFT_MODEL=gpt-oss:120b-cloud python -m agentdrift eval --repeats 2` (or
+any OpenAI-compatible endpoint, cloud or local).
+
 ## Status
 
-v0.1: working harness, validated estimator, HTML reports, OpenAI-compatible
-backend. Adding next: trajectory replay in the report (per-step diffs), a
-task-definition schema for third-party tasks.
+v0.1.1: working harness, calibrated estimator, HTML + JSON reports,
+OpenAI-compatible backend tested against a real reasoning model.
 
 MIT licensed.
